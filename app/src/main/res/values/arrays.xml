@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="education_levels">
+        <item>Primary School</item>
+        <item>Secondary School</item>
+        <item>Diploma</item>
+        <item>Certificate</item>
+        <item>Degree</item>
+        <item>Masters</item>
+        <item>PhD</item>
+    </string-array>
+
+    <string-array name="information">
+        <item>@string/info_question_requirements</item>
+        <item>@string/info_question_approval_rejection</item>
+        <item>@string/info_question_amount_fees</item>
+        <item>@string/info_question_payment</item>
+        <item>@string/info_question_late_pay</item>
+        <item>@string/info_question_emergency_loan</item>
+        <item>@string/info_question_other</item>
+    </string-array>
+</resources>

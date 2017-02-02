@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EB1C24"
+    tools:context="com.ekopa.android.app.fragment.HomeFirstTimeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="18dp"
+        android:layout_above="@+id/btn_apply_for_loan">
+
+        <TextView
+            android:id="@+id/tv_home_greetings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/greetings_sample"
+            android:textColor="@color/body_text_1"
+            android:textSize="@dimen/two_and_half_text_unit" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="@dimen/four_grid_unit"
+                android:layout_weight="1"
+                android:text="@string/current_limit"
+                android:textColor="@color/body_text_1_inverse"
+                android:textSize="@dimen/two_and_half_text_unit" />
+
+            <TextView
+                android:id="@+id/tv_home_credit_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="@dimen/four_grid_unit"
+                android:text="@string/cash_sample"
+                android:textColor="@color/body_text_1"
+                android:textSize="@dimen/two_and_half_text_unit" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:text="@string/explain_limit" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="193dp"
+            android:layout_marginTop="@dimen/two_grid_unit"
+            app:srcCompat="@drawable/ekopa_wallet"
+            android:id="@+id/imageView4" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--</android.support.v7.widget.CardView>-->
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_apply_for_loan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/one_grid_unit"
+        android:layout_marginTop="@dimen/one_grid_unit"
+        android:minHeight="?attr/listPreferredItemHeight"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/apply_for_loan_upper_case"
+        android:textColor="@color/cardview_light_background"
+        android:theme="@style/primaryButtons" />
+</RelativeLayout>

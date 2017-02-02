@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="eleven_text_unit">88.0sp</dimen>
+    <dimen name="fifteen_grid_unit">120.0dip</dimen>
+    <dimen name="five_grid_unit">40.0dip</dimen>
+    <dimen name="five_text_unit">40.0sp</dimen>
+    <dimen name="forty_grid_unit">320.0dip</dimen>
+    <dimen name="four_and_half_grid_unit">36.0dip</dimen>
+    <dimen name="four_and_half_text_unit">36.0sp</dimen>
+    <dimen name="four_grid_unit">32.0dip</dimen>
+    <dimen name="four_text_unit">32.0sp</dimen>
+    <dimen name="fourteen_grid_unit">112.0dip</dimen>
+    <dimen name="fourteen_text_unit">112.0sp</dimen>
+    <dimen name="half_grid_unit">4.0dip</dimen>
+    <dimen name="half_text_unit">4.0sp</dimen>
+    <dimen name="nine_grid_unit">72.0dip</dimen>
+    <dimen name="nine_text_unit">72.0sp</dimen>
+    <item name="onboarding_grocery_margin_right" type="dimen">@dimen/ten_grid_unit</item>
+    <item name="onboarding_subtitle_text_size" type="dimen">@dimen/two_and_quarter_text_unit</item>
+    <item name="onboarding_timers_margin_right" type="dimen">@dimen/two_and_half_grid_unit</item>
+    <dimen name="one_and_half_grid_unit">12.0dip</dimen>
+    <dimen name="one_and_half_text_unit">12.0sp</dimen>
+    <dimen name="one_and_quarter_grid_unit">10.0dip</dimen>
+    <dimen name="one_and_quarter_text_unit">10.0sp</dimen>
+    <dimen name="one_and_three_quarter_text_unit">14.0sp</dimen>
+    <dimen name="one_grid_unit">8.0dip</dimen>
+    <dimen name="one_text_unit">8.0sp</dimen>
+    <item name="profile_picture_width_height" type="dimen">@dimen/nine_grid_unit</item>
+    <item name="profile_picture_width_height_land" type="dimen">@dimen/seven_grid_unit</item>
+    <item name="profile_user_name_text" type="dimen">@dimen/two_and_quarter_text_unit</item>
+    <item name="profile_user_name_text_land" type="dimen">@dimen/two_text_unit</item>
+    <dimen name="quarter_grid_unit">2.0dip</dimen>
+    <dimen name="quarter_text_unit">2.0sp</dimen>
+    <dimen name="seven_and_half_grid_unit">60.0dip</dimen>
+    <dimen name="seven_grid_unit">56.0dip</dimen>
+    <dimen name="seven_text_unit">56.0sp</dimen>
+    <dimen name="six_grid_unit">48.0dip</dimen>
+    <dimen name="six_text_unit">48.0sp</dimen>
+    <dimen name="sixteen_grid_unit">128.0dip</dimen>
+    <dimen name="ten_grid_unit">80.0dip</dimen>
+    <dimen name="ten_text_unit">80.0sp</dimen>
+    <dimen name="thirteen_grid_unit">104.0dip</dimen>
+    <dimen name="thirteen_text_unit">104.0sp</dimen>
+    <dimen name="thirty_grid_unit">240.0dip</dimen>
+    <dimen name="three_and_half_grid_unit">28.0dip</dimen>
+    <dimen name="three_and_half_text_unit">28.0sp</dimen>
+    <dimen name="three_grid_unit">24.0dip</dimen>
+    <dimen name="three_quarter_grid_unit">6.0dip</dimen>
+    <dimen name="three_text_unit">24.0sp</dimen>
+    <dimen name="twelve_grid_unit">96.0sp</dimen>
+    <dimen name="twelve_text_unit">96.0sp</dimen>
+    <dimen name="twenty_grid_unit">160.0dip</dimen>
+    <dimen name="two_and_half_grid_unit">20.0dip</dimen>
+    <dimen name="two_and_half_text_unit">20.0sp</dimen>
+    <dimen name="two_and_quarter_grid_unit">18.0dip</dimen>
+    <dimen name="two_and_quarter_text_unit">18.0sp</dimen>
+    <dimen name="two_and_three_quarter_text_unit">22.0sp</dimen>
+    <dimen name="two_grid_unit">16.0dip</dimen>
+    <dimen name="two_text_unit">16.0sp</dimen>
+    <dimen name="card_margins">2.0dip</dimen>
+</resources>

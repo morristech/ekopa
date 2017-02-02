@@ -1,0 +1,156 @@
+<resources>
+    <string name="app_name">eKopa</string>
+    <string name="app_tag_line">Your best app for soft loans</string>
+    <string name="title_invite">Invite Friends</string>
+    <string name="title_loans">My Loans</string>
+    <string name="action_settings">Settings</string>
+    <string name="content_description_nav_header">XYZ Application</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="feedback">Feedback</string>
+    <string name="help_and_faqs">Help / FAQs</string>
+    <string name="home">Home</string>
+    <string name="manage_account">Manage Account</string>
+    <string name="apply_for_loan">Apply for a Loan</string>
+    <string name="apply_for_loan_upper_case">APPLY FOR A LOAN</string>
+    <string name="my_loans">My Loans</string>
+    <string name="txt_done">Done</string>
+    <string name="txt_send">Send Invite</string>
+    <string name="txt_search">Search</string>
+    <string name="txt_invite">You can now get an instant loan using the eKopa app! Visit Play Store: https://goo.gl/WsjbB7 to download and use the referral code</string>
+    <string name="user_image">User Image</string>
+    <string name="title_activity_apply_for_loan">ApplyForLoanActivity</string>
+
+    <string name="facebook_app_id">613035772231244</string>
+
+    <string name="amount">Amount</string>
+    <string name="date_of_birth">   Date of Birth</string>
+    <string name="national_id">National ID</string>
+    <string name="issue_date">   Issue Date</string>
+    <string name="how_did_you_hear">How did you hear about us?</string>
+    <string name="referral_code">Referral Code</string>
+    <string name="currency">KES</string>
+    <string name="explain_limit">This is the most you can borrow right now. Repaying your loans increases the limit.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="explain_confirm_identity">Confirm your identity by filling out the below as shown on your National ID card.</string>
+    <string name="prompt_loan_amount">How much would you like?</string>
+    <string name="previous">PREVIOUS</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="prompt_register">Don\'t have an account? Register</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="password">PIN</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="create_account">Create Account</string>
+    <string name="prompt_already_member">Already a member? Login</string>
+    <string name="agree_to_terms">I agree to the terms of service.</string>
+    <string name="agree_to">I agree to </string>
+    <string name="terms_and_service"> terms and service.</string>
+    <string name="terms_and_condition">terms and condition.</string>
+    <string name="prompt_take_picture">Click here to add your profile picture.</string>
+    <string name="users_with_picture_earn">Users with a valid profile picture enjoy a higher credit limit ;)</string>
+    <string name="prompt_date_of_issue">Date of issue:   DD.MM.YYYY</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="terms_url">http://www.google.com</string>
+    <string name="prompt_no_account">No account yet? Create one</string>
+    <string name="prompt_date_of_birth">Date of Birth</string>
+    <string name="country_code">+254</string>
+    <string name="operator_common">+254 7</string>
+    <string name="prompt_enter_code">Enter the activation code</string>
+    <string name="explain_code">Please enter the code sent to the phone number you provided.</string>
+    <string name="activation_code">Activation Code</string>
+    <string name="activate">ACTIVATE</string>
+    <string name="prompt_resend_code">Didn\'t receive code? Resend code.</string>
+    <string name="app_short_name">eKopa</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="action_log_out">Log out</string>
+    <string name="apply_loan_need_more_info">eKopa would like to know you better.\n Please tell us more about yourself:</string>
+    <string name="current_limit">Current credit limit:</string>
+    <string name="prompt_gender">Gender:</string>
+    <string name="prompt_marriage_status">Are you married?</string>
+    <string name="prompt_education_level">Highest education level:</string>
+    <string name="prompt_monthly_income">Monthly income (KES):</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="submit">SUBMIT</string>
+    <string name="apply_now">APPLY NOW</string>
+    <string name="increase_limit">Increase Limit</string>
+    <string name="submit_success">Application sent successfully. We will notify you shortly once it has been approved.</string>
+    <string name="confirm_password">Confirm PIN</string>
+    <string name="prompt_forgot_password">Forgot PIN?</string>
+    <string name="title_activity_forgot">Forgot PIN</string>
+    <string name="phoneNumber_sample">07xx xxx xxx</string>
+    <string name="prompt_phone_number">Enter the phone number you registered with.</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="phoneNumber_eight_digit_mask">XX XXX XXX</string>
+    <string name="prompt_reset_password">Reset PIN</string>
+    <string name="code">Code</string>
+    <string name="new_password">New PIN</string>
+    <string name="reset">Reset</string>
+    <string name="greetings_sample">Hi John Doe</string>
+    <string name="welcome_info">Welcome to eKopa, your best app for soft loans. Let us help you turn your financial potential into a capability.</string>
+    <string name="cash_sample">KES. 1500</string>
+    <string name="forgot_pin">Forgot pin?</string>
+    <string name="prompt_log_out_to_reset_pin">Log out of application to create a new PIN?</string>
+    <string name="loan_balance">Loan Balance</string>
+    <string name="payment_installments">Payment Installments</string>
+    <string name="make_payment">MAKE PAYMENT</string>
+    <string name="date_sample">October 20</string>
+    <string name="pending_loan_explain">Loan request sent successfully. You will get a confirmation message shortly.</string>
+    <string name="refresh">REFRESH</string>
+    <string name="congratulations">CONGRATULATIONS!!</string>
+    <string name="congratulations_paid_sample">You have cleared your payment of 1700ksh. Your outstanding loan balance is  0ksh. Thank you for being loyal to eKopa!</string>
+    <string name="new_credit_limit_sample">New Credit Limit:  Ksh. 2800</string>
+    <string name="title_apply_for_loan">Apply for a loan</string>
+    <string name="learn_more">Learn More</string>
+    <string name="rejected_loan_explain">Hi Peter, sadly you do not qualify for a loan at this time. Keep eKopa installed on your phone so that we can notify you once this status changes.</string>
+    <string name="temp_login_credentials">Phone: 0714196612 \n password: password</string>
+    <string name="title_activity_feedback">FeedbackActivity</string>
+    <string name="hello">Hello.</string>
+    <string name="feedback_prompt">We\'d love to get feedback from you on our app. The more details you can provide, the better.</string>
+    <string name="date_sample_1">October 2</string>
+    <string name="date_sample_2">October 9</string>
+    <string name="date_sample_3">October 16</string>
+    <string name="explain_payment">Repay your loan installments before or on the following dates.</string>
+    <string name="cash_sample_2">KES. 4500</string>
+    <string name="subject">Subject</string>
+    <string name="message">Message</string>
+    <string name="loan_history">Your Loan History</string>
+    <string name="title_activity_make_payment">Make Payment</string>
+    <string name="pay_now">PAY NOW</string>
+    <string name="payment_instructions"><![CDATA[
+    1. Go to you Safaricom menu and select M-pesa.\n
+    2. From your mpesa menu select lipa na mpesa.\n
+    3. Select pay bill option. Enter the business number 811139.\n
+    4. Enter your mobile money number on which you received the loan from eKopa as the account number.\n
+    5. Enter the amount you are paying. Enter your mpesa pin.\n
+    6. Confirm whether the details are correct and press OK.\n
+    ]]>
+    </string>
+    <string name="or">OR</string>
+    <string name="amount_hint">0</string>
+    <string name="input_prefill">prefill</string>
+    <string name="title_activity_help_faq">HelpFAQActivity</string>
+    <string name="sample_information_heading">What is eKopa?</string>
+    <string name="get_more_information">Click to go next</string>
+
+    <string name="info_question_requirements">What are requirements for applying for a loan?</string>
+    <string name="info_question_approval_rejection">Loan approval or rejection.</string>
+    <string name="info_question_amount_fees">Loan amount and fees</string>
+    <string name="info_question_payment">Payment instructions</string>
+    <string name="info_question_late_pay">What happens when you pay late.</string>
+    <string name="info_question_emergency_loan">What is emergency loan.</string>
+    <string name="info_question_other">Other</string>
+    <string name="title">Title</string>
+    <string name="text_card_contents">Content</string>
+    <string name="could_not_reach_server">Could not reach server</string>
+</resources>

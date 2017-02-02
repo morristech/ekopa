@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ekopa.android.app.MainActivity">
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/action_settings"-->
+        <!--app:showAsAction="never" />-->
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="@string/action_log_out"
+        app:showAsAction="never" />
+    <item
+        android:title="First Time User"
+        android:orderInCategory="101"
+        android:id="@+id/action_firstTime" />
+    <item
+        android:title="Pending Loan"
+        android:orderInCategory="102"
+        android:id="@+id/action_pendingLoan" />
+    <item
+        android:title="Active Loan"
+        android:orderInCategory="103"
+        android:id="@+id/action_activeLoan" />
+    <item
+        android:title="Rejected Loan"
+        android:orderInCategory="104"
+        android:id="@+id/action_rejectedLoan" />
+    <item
+        android:title="Paid Loan"
+        android:orderInCategory="105"
+        android:id="@+id/action_paidLoan" />
+</menu>

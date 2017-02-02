@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="eight_grid_unit">48.0dip</dimen>
+    <dimen name="eight_text_unit">48.0sp</dimen>
+    <dimen name="eleven_grid_unit">66.0dip</dimen>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f44336</color>
+    <color name="colorPrimaryDark">#d32f2f</color>
+    <color name="kopaLogoColor">#EB1C25</color>
+    <color name="colorAccent">@color/md_grey_700</color>
+    <color name="profileColor">#0288d1</color>
+    <color name="navigation_selected_item_background">#3c424242</color>
+
+    <color name="background_gradient_color_start">#00000000</color>
+    <color name="background_gradient_color_end">#b4000000</color>
+
+    <color name="green">#1c1</color>
+    <color name="red">#f00</color>
+
+    <color name="body_text_1">#de000000</color>
+    <color name="body_text_1_inverse">#deffffff</color>
+    <color name="body_text_2">#8a000000</color>
+    <color name="body_text_2_inverse">#caffffff</color>
+    <color name="body_text_3">#60000000</color>
+    <color name="body_text_3_inverse">#8affffff</color>
+    <color name="body_text_disabled">#44000000</color>
+    <color name="cardView_dark_background">#ff202020</color>
+    <color name="cardView_light_background">#fffafafa</color>
+    <color name="cardView_shadow_end_color">#03000000</color>
+    <color name="cardView_shadow_start_color">#37000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="white_semitransparent">#aaffffff</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen2">#14a895</color>
+    <color name="dot_dark_screen3">#2278d4</color>
+    <color name="dot_dark_screen4">#a854d4</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen2">#8cf9eb</color>
+    <color name="dot_light_screen3">#93c6fd</color>
+    <color name="dot_light_screen4">#e4b5fc</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+</resources>
+
