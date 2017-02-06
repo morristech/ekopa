@@ -10,18 +10,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://37.139.1.205/api/";
+    //public static final String BASE_URL = "http://ekopa.workpoint.co.ke/ekopa/api/";
+    public static final String BASE_URL = "http://192.168.43.210:8080/ekopa/api/";
     private static Retrofit retrofit = null;
 
 
     public static Retrofit getClient() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(logging)
                 .readTimeout(60, TimeUnit.SECONDS)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .build();
+
+
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

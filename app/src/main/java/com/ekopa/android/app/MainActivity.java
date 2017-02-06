@@ -104,7 +104,7 @@ public class MainActivity extends PinCompatActivity implements
 
         if(isNetworkAvailable()) {
             //upload user messages and call logs
-            uploadMpesaMessages();
+           // uploadMpesaMessages();
 //        uploadAllCallLogs(getContentResolver());
             startService(new Intent(this, LocationService.class));
 

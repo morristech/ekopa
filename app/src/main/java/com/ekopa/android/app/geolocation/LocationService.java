@@ -88,13 +88,13 @@ public class LocationService extends Service implements LocationListener {
                 call.enqueue(new Callback<ResponseModel>() {
                     @Override
                     public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                        if (response.body() != null && response.body().getStatus_code().equals(200)) {
+                        if (response.body() != null && response.body().getStatusCode().equals(200)) {
                             //success
                             Log.e("SUCCESS RESPONSE", response.body().getDescription());
-                        } else if (response.body().getStatus_code().equals(500)) {
+                        } else if (response.body().getStatusCode().equals(500)) {
                             //fail
                             Log.e("SERVER FAIL RESPONSE", response.body().getDescription());
-                        } else if (response.body().getStatus_code().equals(404)) {
+                        } else if (response.body().getStatusCode().equals(404)) {
                             //Service not available
                             Log.e("404 RESPONSE", response.body().getDescription());
                         }

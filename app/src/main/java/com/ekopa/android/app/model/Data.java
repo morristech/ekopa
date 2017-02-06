@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
-    private String id;
+    private String id; //Same as refId from server side
     private String name;
     private String password;
     private String password_token;
@@ -15,12 +15,13 @@ public class Data {
     private String phonenumber;
     private String photo;
     private String access_token;
-    private String id_number;
+    private String idNumber;
     private String dob;
     private String created_at;
     private String updated_at;
-    private String is_activated;
+    private String isActive;
     private String activation_code;
+    private Integer creditScore;
     private CustomerSettings settings;
     private List<Loan_request> loan_requests = new ArrayList<>();
     private List<Loan> loans = new ArrayList<>();
@@ -167,17 +168,17 @@ public class Data {
     }
 
     /**
-     * @return The id_number
+     * @return The idNumber
      */
-    public String getId_number() {
-        return id_number;
+    public String getIdNumber() {
+        return idNumber;
     }
 
     /**
-     * @param id_number The id_number
+     * @param idNumber The idNumber
      */
-    public void setId_number(String id_number) {
-        this.id_number = id_number;
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
     }
 
     /**
@@ -223,17 +224,17 @@ public class Data {
     }
 
     /**
-     * @return The is_activated
+     * @return The isActive
      */
-    public String getIs_activated() {
-        return is_activated;
+    public String getIsActive() {
+        return isActive;
     }
 
     /**
-     * @param is_activated The is_activated
+     * @param isActive The isActive
      */
-    public void setIs_activated(String is_activated) {
-        this.is_activated = is_activated;
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
     }
 
     /**
@@ -304,5 +305,17 @@ public class Data {
      */
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
+    }
+
+    public Integer getCreditScore() {
+        return creditScore;
+    }
+
+    public void setCreditScore(Integer creditScore) {
+        this.creditScore = creditScore;
+    }
+
+    public CustomerSettings getSettings() {
+        return settings;
     }
 }

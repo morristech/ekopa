@@ -58,16 +58,12 @@ public class PrefManager {
      * Create login session
      * */
 
-    public void createLoginSession(String userToken, String userID, String name, String imgURL,
-                                   String phone, String idNumber, String dob, String creditLimit, String referralCode) {
+    public void createLoginSession(String userRefId, String name, String imgURL,
+                                   String phone, String idNumber, String dob, String creditLimit) {
 
-
-
-        // Storing username in pref
-        editor.putString(KEY_USERTOKEN, userToken);
 
         // Storing userID in pref
-        editor.putString(KEY_USERID, userID);
+        editor.putString(KEY_USERID, userRefId);
 
         // Storing name in pref
         editor.putString(KEY_NAME, name);
@@ -83,9 +79,6 @@ public class PrefManager {
 
         // Storing credit limit in pref
         editor.putString(KEY_CREDIT_LIMIT, creditLimit);
-
-        // Storing credit limit in pref
-        editor.putString(KEY_REFERRAL_CODE, referralCode);
 
         // commit changes
         editor.commit();

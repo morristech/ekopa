@@ -85,7 +85,7 @@ public class ForgotPasswordFragment extends Fragment {
 
         phone = phone.split("\\+")[1];
         Customer customer = new Customer();
-        customer.setPhonenumber(phone);
+        customer.setUsername(phone);
         customer.setAccess_token(getString(R.string.system_token));
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
@@ -94,9 +94,9 @@ public class ForgotPasswordFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 progressDialog.dismiss();
-                if (response.body() != null && response.body().getStatus_code().equals(200)) {
+                if (response.body() != null && response.body().getStatusCode().equals(200)) {
                     onResetSuccess();
-                } else if (response.body().getStatus_code().equals(400)) {
+                } else if (response.body().getStatusCode().equals(400)) {
                     onResetFailed(response.body().getData().getCode() != null ? response.body().getData().getCode():"");
                 }
             }

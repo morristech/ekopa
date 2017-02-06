@@ -2,7 +2,6 @@ package com.ekopa.android.app.fragment;
 
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -85,11 +84,11 @@ public class ApprovedLoansFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 progressDialog.dismiss();
-                if (response.body() != null && response.body().getStatus_code().equals(200)) {
+                if (response.body() != null && response.body().getStatusCode().equals(200)) {
                     onRequestSuccess(response.body());
-                } else if (response.body().getStatus_code().equals(400)) {
+                } else if (response.body().getStatusCode().equals(400)) {
                     onRequestFailed("Service not available");
-                } else if (response.body().getStatus_code().equals(404)) {
+                } else if (response.body().getStatusCode().equals(404)) {
                     onRequestFailed("Service not available");
                 }
             }

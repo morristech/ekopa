@@ -113,7 +113,7 @@ public class ResetPasswordFragment extends Fragment {
         progressDialog.show();
 
         Customer customer = new Customer();
-        customer.setPhonenumber(mPhoneNumber);
+        customer.setUsername(mPhoneNumber);
         customer.setAccess_token(getString(R.string.system_token));
         customer.setPassword_token(passwordToken);
         customer.setNew_password(password);
@@ -125,7 +125,7 @@ public class ResetPasswordFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 progressDialog.dismiss();
-                if (response.body() != null && response.body().getStatus_code().equals(200)) {
+                if (response.body() != null && response.body().getStatusCode().equals(200)) {
                     onResetSuccess();
                 }
             }
@@ -202,7 +202,7 @@ public class ResetPasswordFragment extends Fragment {
         progressDialog.show();
 
         Customer customer = new Customer();
-        customer.setPhonenumber(mPhoneNumber);
+        customer.setUsername(mPhoneNumber);
         customer.setAccess_token(getString(R.string.system_token));
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
@@ -211,10 +211,10 @@ public class ResetPasswordFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 progressDialog.dismiss();
-                if (response.body() != null && response.body().getStatus_code().equals(200)) {
+                if (response.body() != null && response.body().getStatusCode().equals(200)) {
                     startTimer();
                     Toast.makeText(getContext(), "You will receive the code shortly", Toast.LENGTH_SHORT).show();
-                } else if (response.body().getStatus_code().equals(400)) {
+                } else if (response.body().getStatusCode().equals(400)) {
                     onResetFailed(response.body().getData().getCode() != null ? response.body().getData().getCode():"");
                 }
             }

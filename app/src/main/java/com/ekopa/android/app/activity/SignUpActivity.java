@@ -22,8 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cocosw.bottomsheet.BottomSheet;
-import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
-import com.codetroopers.betterpickers.calendardatepicker.MonthAdapter;
+import com.ekopa.android.app.model.CustomerResponse;
 import com.google.gson.Gson;
 import com.lamudi.phonefield.PhoneInputLayout;
 import com.ekopa.android.app.R;
@@ -54,12 +53,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     @BindView(R.id.img_sign_up_photo)    CircleImageView user_photo;
     @BindView(R.id.img_sign_up_icon)    ImageView cam_icon;
-    @BindView(R.id.input_firstName)    EditText _firstNameText;
-    @BindView(R.id.input_lastName) EditText _lastNameText;
     @BindView(R.id.input_idNumber) EditText _idNumberText;
-    @BindView(R.id.tv_date_of_birth)
-    EditText _dateOfBirth;
-    @BindView(R.id.input_phoneNumber_signUp) PhoneInputLayout _phoneNumber;
+    @BindView(R.id.input_phoneNumber) PhoneInputLayout _phoneNumber;
     @BindView(R.id.input_password_signUp) EditText _passwordText;
     @BindView(R.id.input_confirm_password_signUp) EditText _confirmPasswordText;
     @BindView(R.id.cb_terms_conditions)    AppCompatCheckBox _termsCheckBox;
@@ -110,29 +105,6 @@ public class SignUpActivity extends AppCompatActivity {
         c.set(Calendar.YEAR, newYear);
 
 
-        _dateOfBirth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment()
-                        .setDateRange(null, new MonthAdapter.CalendarDay(c.getTimeInMillis()))
-                        .setOnDateSetListener(new CalendarDatePickerDialogFragment.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(CalendarDatePickerDialogFragment dialog, int year, int monthOfYear, int dayOfMonth) {
-                                String date;
-                                monthOfYear++; //increment monthOfYear since they start from index 0
-                                if (monthOfYear<10){
-                                    date = year + "-0" + monthOfYear + "-" + dayOfMonth;
-                                }else{
-                                    date = year + "-" + monthOfYear + "-" + dayOfMonth;
-                                }
-
-                                _dateOfBirth.setText(date);
-                            }
-                        });
-                cdp.show(getSupportFragmentManager(), FRAG_TAG_TIME_PICKER);
-            }
-        });
-
         user_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -175,10 +147,8 @@ public class SignUpActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        String firstName = _firstNameText.getText().toString();
-        String lastName = _lastNameText.getText().toString();
+
         String idNumber = _idNumberText.getText().toString();
-        String dateOfBirth = _dateOfBirth.getText().toString();
 //        String phoneNumber = "2547" + _phoneNumber.getText().toString();
         String phoneNumber = _phoneNumber.getPhoneNumber();
         phoneNumber = phoneNumber.split("\\+")[1];
@@ -187,56 +157,55 @@ public class SignUpActivity extends AppCompatActivity {
 
         // TODO: Implement your own signup logic here.
         Customer customer = new Customer();
-        customer.setName(firstName + " " + lastName);
-        customer.setId_number(idNumber);
-        customer.setDob(dateOfBirth);
-        customer.setPhonenumber(phoneNumber);
+        customer.setIdNumber(idNumber);
+        customer.setPhoneNumber(phoneNumber);
         customer.setPassword(password);
-        customer.setPhoto(photo_base64);
-        customer.setAccess_token(getString(R.string.system_token));
+        // customer.setPhoto(photo_base64)
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<ResponseModel> call = apiService.createCustomer(customer);
-        call.enqueue(new Callback<ResponseModel>() {
+        Call<CustomerResponse> call = apiService.createCustomer("omy4w7bRRKEUFP9Z",customer);
+        call.enqueue(new Callback<CustomerResponse>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+            public void onResponse(Call<CustomerResponse> call, Response<CustomerResponse> response) {
                 _signupButton.setEnabled(true);
                 progressDialog.dismiss();
-                if (response.body() != null && response.body().getStatus_code().equals(200)) {
+                if (response.body() != null && (response.body().getStatusCode().equals("0000")||response.body().getStatusCode().equals("E001") )) {
                     onSignupSuccess(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
+            public void onFailure(Call<CustomerResponse> call, Throwable t) {
                 _signupButton.setEnabled(true);
                 progressDialog.dismiss();
+
                 Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Signup Failure",t);
             }
         });
 
     }
 
-    public void onSignupSuccess(ResponseModel rm) {
-        _signupButton.setEnabled(true);
+    public void onSignupSuccess(CustomerResponse response) {
         Gson gson = new Gson();
-        String json = gson.toJson(rm.getData());
-        Customer customer = gson.fromJson(json, Customer.class);
+        String json = gson.toJson(response);
+        CustomerResponse customer = gson.fromJson(json, CustomerResponse.class);
         PrefManager pref = new PrefManager(SignUpActivity.this);
 
-        String userToken = customer.getAccess_token();
-        String userID = customer.getId();
+        String userRefId = customer.getCustomerRefId();
         String name = customer.getName();
-        String imgURL = customer.getPhoto();
-        String creditLimit = customer.getCustomerSettings().getCredit_limit().toString();
-        String referralCode = customer.getCustomerSettings().getReferral_code();
+        //String imgURL = customer.getPhoto();
+        String imgURL = "";
+        String creditScore = customer.getCreditScore().toString();
+        Double creditLimit=0.0;
 
-
-        String phone = customer.getPhonenumber(),
-                id = customer.getId_number(),
+        String phone = customer.getPhoneNumber(),
+                id = customer.getIdNumber(),
                 dob = customer.getDob();
 
-        pref.createLoginSession(userToken, userID, name, imgURL, phone, id, dob, creditLimit, referralCode);
+        startActivity(new Intent(this, ActivationActivity.class));
+
+        pref.createLoginSession(userRefId, name, imgURL, phone, id, dob, creditLimit.toString());
 
         setResult(RESULT_OK, null);
         finish();
@@ -254,13 +223,10 @@ public class SignUpActivity extends AppCompatActivity {
         String idNumber = _idNumberText.getText().toString();
         String password = _passwordText.getText().toString();
         String confirmPass = _confirmPasswordText.getText().toString();
-        String fname = _firstNameText.getText().toString();
-        String lname = _lastNameText.getText().toString();
 //        String phoneNumber = _phoneNumber.getText().toString();
-        String dob = _dateOfBirth.getText().toString();
 
-        if (idNumber.isEmpty() || idNumber.length() < 8) {
-            _idNumberText.setError("ID number is invalid");
+        if (idNumber.isEmpty() || idNumber.length() < 7) {
+            _idNumberText.setError("ID number is invalid. Must be greater than 7 digits.");
             valid = false;
         } else {
             _idNumberText.setError(null);
@@ -271,20 +237,6 @@ public class SignUpActivity extends AppCompatActivity {
             valid = false;
         } else {
             _passwordText.setError(null);
-        }
-
-        if (fname.isEmpty()) {
-            _firstNameText.setError("Field is required");
-            valid = false;
-        } else {
-            _firstNameText.setError(null);
-        }
-
-        if (lname.isEmpty()) {
-            _lastNameText.setError("Field is required");
-            valid = false;
-        } else {
-            _lastNameText.setError(null);
         }
 
 //        if (phoneNumber.isEmpty() || phoneNumber.length() < 8) {
@@ -302,13 +254,6 @@ public class SignUpActivity extends AppCompatActivity {
             valid = false;
         }
 
-        if (dob.isEmpty()) {
-            _dateOfBirth.setError("Date of birth is required");
-            valid = false;
-        } else {
-            _dateOfBirth.setError(null);
-        }
-
         if (confirmPass.isEmpty()){
             _confirmPasswordText.setError("Please confirm password");
             valid = false;
@@ -324,10 +269,10 @@ public class SignUpActivity extends AppCompatActivity {
             valid = false;
         }
 
-        if (photo_base64.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Please take a selfie :)", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }
+//        if (photo_base64.isEmpty()) {
+//            Toast.makeText(SignUpActivity.this, "Please take a selfie :)", Toast.LENGTH_SHORT).show();
+//            valid = false;
+//        }
 
         return valid;
     }

@@ -2,19 +2,21 @@ package com.ekopa.android.app.model;
 
 
 public class Customer {
-    private String id;
+    private String Id;
     private String name;
     private String password;
-    private String phonenumber;
+    private String username;
+    private String phoneNumber;
     private String photo;
     private String access_token;
-    private String id_number;
+    private String idNumber;
     private String dob;
     private String created_at;
     private String updated_at;
     private String is_activated;
     private String activation_code;
     private CustomerSettings settings;
+    private String actionType;
 
     private String password_token;
     private String new_password;
@@ -77,17 +79,17 @@ public class Customer {
     }
 
     /**
-     * @return The id
+     * @return The Id
      */
     public String getId() {
-        return id;
+        return Id;
     }
 
     /**
-     * @param id The id
+     * @param id The Id
      */
     public void setId(String id) {
-        this.id = id;
+        this.Id = id;
     }
 
     /**
@@ -105,17 +107,17 @@ public class Customer {
     }
 
     /**
-     * @return The phonenumber
+     * @return The username
      */
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param phonenumber The phonenumber
+     * @param username The username
      */
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -147,17 +149,17 @@ public class Customer {
     }
 
     /**
-     * @return The id_number
+     * @return The idNumber
      */
-    public String getId_number() {
-        return id_number;
+    public String getIdNumber() {
+        return idNumber;
     }
 
     /**
-     * @param id_number The id_number
+     * @param idNumber The idNumber
      */
-    public void setId_number(String id_number) {
-        this.id_number = id_number;
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
     }
 
     /**
@@ -243,4 +245,22 @@ public class Customer {
     public void setSettings(CustomerSettings settings) {
         this.settings = settings;
     }
+
+    public String getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+
 }

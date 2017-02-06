@@ -132,29 +132,33 @@ public class LoginActivity extends AppCompatActivity {
 //        String phone = "2547" + _phoneText.getText().toString();
         String phone = _phoneText.getPhoneNumber();
         phone = phone.split("\\+")[1];
-        Log.e("PHONE", phone);
+        Log.i("PHONE", phone);
         String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
         Customer customer = new Customer();
-        customer.setPhonenumber(phone);
+        customer.setUsername(phone);
         customer.setPassword(password);
-        customer.setAccess_token(getString(R.string.system_token));
+        customer.setActionType("VIA_CREDENTIALS");
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<ResponseModel> call = apiService.loginCustomer(customer);
+        Call<ResponseModel> call = apiService.loginCustomer("omy4w7bRRKEUFP9Z",customer);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 progressDialog.dismiss();
                 if (response.body() != null) {
-                    if(response.body().getStatus_code().equals(200)) {
+                   Log.i("RESPONSE","Response body>>>"+response.body().getStatusCode());
+
+                   if(response.body().getStatusCode().toString().equals("200")) {
                         onLoginSuccess(response.body());
-                    }else if (response.body().getStatus_code().equals(400)) {
+                    }else if (response.body().getStatusCode().equals("401")) {
                         onLoginFailed("Incorrect phone or password");
-                    } else if (response.body().getStatus_code().equals(404)) {
+                    } else if (response.body().getStatusCode().equals("404")) {
                         onLoginFailed("No user found with that phone number.");
-                    }
+                    }else{
+                       onLoginFailed("Response code not understood!");
+                   }
                 }else{
                     onLoginFailed("No response from server.");
                 }
@@ -189,23 +193,26 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess(ResponseModel rm) {
+        Log.d(TAG, "Login was successful!");
         _loginButton.setEnabled(true);
         Data data = rm.getData();
         PrefManager pref = new PrefManager(LoginActivity.this);
+        pref.setIsLogin();
+        finish();
 
-        pref.createLoginSession(data.getAccess_token(), data.getId(), data.getName(), data.getPhoto(),
-                data.getPhonenumber(), data.getId_number(), data.getDob(),
-                data.getCustomerSettings().getCredit_limit().toString(),
-                data.getCustomerSettings().getReferral_code());
+        pref.createLoginSession(data.getId(),data.getName(),"",data.getPhonenumber(),data.getIdNumber(),data.getDob(), "0");
 
-        if (data.getIs_activated().equals("1")) {
-
+        if (data.getIsActive().toString().equals("1")) {
+            Log.d(TAG, "Going to MainActivity");
             pref.setIsLogin();
             startActivity(new Intent(this, MainActivity.class));
             finish();
-        } else {
+        } else if(data.getIsActive().toString().equals("0")) {
+            Log.d(TAG, "Force user to activate first");
             startActivity(new Intent(this, ActivationActivity.class));
             this.finish();
+        }else{
+            onLoginFailed("Failed to determine if you active or not!");
         }
     }
 

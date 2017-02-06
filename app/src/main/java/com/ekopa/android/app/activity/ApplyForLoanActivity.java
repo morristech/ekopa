@@ -115,11 +115,11 @@ public class ApplyForLoanActivity extends AppCompatActivity {
                 if (response.body() == null) {
                     onSubmitFailed("Something went wrong, please try again later");
                 } else {
-                    if (response.body() != null && response.body().getStatus_code().equals(200)) {
+                    if (response.body() != null && response.body().getStatusCode().equals(200)) {
                         onSubmitSuccess();
-                    } else if (response.body().getStatus_code().equals(400)) {
+                    } else if (response.body().getStatusCode().equals(400)) {
                         onSubmitFailed("Incorrect phone or password");
-                    } else if (response.body().getStatus_code().equals(404)) {
+                    } else if (response.body().getStatusCode().equals(404)) {
                         onSubmitFailed("No user found with that phone number.");
                     }
 

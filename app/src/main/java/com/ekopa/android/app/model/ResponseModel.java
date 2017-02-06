@@ -4,45 +4,45 @@ package com.ekopa.android.app.model;
  * Created by Bishop on 7/30/2016.
  */
 public class ResponseModel {
-    private Integer status_code;
-    private String reason_phrase;
+    private Integer statusCode;
+    private String reasonPhrase;
     private String description;
     private Data data;
 
     /**
      *
      * @return
-     * The status_code
+     * The statusCode
      */
-    public Integer getStatus_code() {
-        return status_code;
+    public Integer getStatusCode() {
+        return statusCode;
     }
 
     /**
      *
-     * @param status_code
-     * The status_code
+     * @param statusCode
+     * The statusCode
      */
-    public void setStatus_code(Integer status_code) {
-        this.status_code = status_code;
+    public void setStatusCode(Integer statusCode) {
+        this.statusCode = statusCode;
     }
 
     /**
      *
      * @return
-     * The reason_phrase
+     * The reasonPhrase
      */
-    public String getReason_phrase() {
-        return reason_phrase;
+    public String getReasonPhrase() {
+        return reasonPhrase;
     }
 
     /**
      *
-     * @param reason_phrase
-     * The reason_phrase
+     * @param reasonPhrase
+     * The reasonPhrase
      */
-    public void setReason_phrase(String reason_phrase) {
-        this.reason_phrase = reason_phrase;
+    public void setReasonPhrase(String reasonPhrase) {
+        this.reasonPhrase = reasonPhrase;
     }
 
     /**

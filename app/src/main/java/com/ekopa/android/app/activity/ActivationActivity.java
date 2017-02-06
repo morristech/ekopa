@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ekopa.android.app.model.Customer;
+import com.ekopa.android.app.model.CustomerResponse;
 import com.google.gson.JsonObject;
 import com.ekopa.android.app.MainActivity;
 import com.ekopa.android.app.R;
@@ -104,23 +106,23 @@ public class ActivationActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        String token = pref.getUserDetails().get("userToken");
+        String userRefId = pref.getUserDetails().get("userRefId");
 
 
         String code = _activationCode.getText().toString();
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<JsonObject> call = apiService.activateCustomer(token, code);
+        Call<JsonObject> call = apiService.activateCustomer("omy4w7bRRKEUFP9Z",code, userRefId);
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 progressDialog.dismiss();
                 if (response.body() != null) {
-                    String status = response.body().get("status_code").getAsString();
-                    String description = response.body().get("description").getAsString();
-                    String reason = response.body().get("reason_phrase").getAsString();
+                    String status = response.body().get("statusCode").getAsString();
+                    String description = response.body().get("statusDescription").getAsString();
+                    String reason = response.body().get("resultStatus").getAsString();
 
-                    if (status.equals("200") && reason.equalsIgnoreCase("ok")) {
+                    if (status.equals("0000")) {
                         onActivateSuccess();
                     } else {
                         onActivateFailed(description);
@@ -133,6 +135,8 @@ public class ActivationActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 //TODO change error message shown to users
                 onActivateFailed(t.getMessage());
+
+                Log.d(TAG, "Activate Customer",t);
             }
         });
     }
@@ -147,19 +151,24 @@ public class ActivationActivity extends AppCompatActivity {
 
         _btnActivate.setEnabled(false);
 
-        String token = pref.getUserDetails().get("userToken");
+        // TODO: Implement your own signup logic here.
+        Customer customer = new Customer();
+        customer.setIdNumber(pref.getUserDetails().get("idNumber"));
+        customer.setPhoneNumber(pref.getUserDetails().get("phoneNumber"));
+        // customer.setPhoto(photo_base64)
+
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<JsonObject> call = apiService.resendActivationCode(token);
-        call.enqueue(new Callback<JsonObject>() {
+        Call<CustomerResponse> call = apiService.createCustomer("omy4w7bRRKEUFP9Z",customer);
+        call.enqueue(new Callback<CustomerResponse>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            public void onResponse(Call<CustomerResponse> call, Response<CustomerResponse> response) {
                 progressDialog.dismiss();
                 _btnActivate.setEnabled(true);
                 startTimer();
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(Call<CustomerResponse> call, Throwable t) {
                 progressDialog.dismiss();
                 _btnActivate.setEnabled(true);
             }
@@ -184,7 +193,6 @@ public class ActivationActivity extends AppCompatActivity {
     private void onActivateFailed(String message) {
         if (!message.equals(""))
             Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
-
         _btnActivate.setEnabled(true);
     }
 

@@ -69,47 +69,6 @@
             android:text="@string/users_with_picture_earn"
             android:textSize="12sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <!--  First Name Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/input_firstName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/firstName"
-                    android:inputType="textCapWords"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-
-            <!--  Last Name Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/input_lastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/lastName"
-                    android:inputType="textCapWords"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
-
         <!-- National ID Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -127,44 +86,17 @@
                 android:textSize="16sp" />
         </android.support.design.widget.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/tv_date_of_birth"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:gravity="start"
-                android:hint="@string/prompt_date_of_birth"
-                android:inputType="date"
-                android:textSize="16sp" />
-
-            <ImageView
-                app:srcCompat="@drawable/ic_calendar_small"
-                android:gravity="start"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </LinearLayout>
         <!-- Phone Number Label -->
-        <LinearLayout
+        <!-- Phone Label -->
+
+        <com.lamudi.phonefield.PhoneInputLayout
+            android:id="@+id/input_phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:textSize="16sp" />
 
-            <com.lamudi.phonefield.PhoneInputLayout
-                android:id="@+id/input_phoneNumber_signUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/phoneNumber"
-                android:inputType="phone"
-                android:textSize="16sp" />
-        </LinearLayout>
 
         <!-- Password Label -->
         <android.support.design.widget.TextInputLayout
