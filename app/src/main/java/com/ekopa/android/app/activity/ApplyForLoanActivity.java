@@ -38,13 +38,8 @@ public class ApplyForLoanActivity extends AppCompatActivity {
     TextView _creditLimit;
     @BindView(R.id.et_apply_amount)
     EditText _amount;
-    @BindView(R.id.et_apply_income) EditText _monthlyIncome;
     @BindView(R.id.btn_apply_loan_submit)
     AppCompatButton btnSubmit;
-    @BindView(R.id.rb_gender_male)
-    AppCompatRadioButton rbGenderMale;
-    @BindView(R.id.rb_marriage_yes)
-    AppCompatRadioButton rbMarriageYes;
 
     PrefManager pref;
 
@@ -63,8 +58,6 @@ public class ApplyForLoanActivity extends AppCompatActivity {
 
         _creditLimit.setText(creditLimit);
 
-        rbGenderMale.setChecked(true);
-        rbMarriageYes.setChecked(true);
 
         final MaterialDialog dlgConfirm = new MaterialDialog.Builder(this)
                 .title("Success")
@@ -111,7 +104,6 @@ public class ApplyForLoanActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 progressDialog.dismiss();
-
                 if (response.body() == null) {
                     onSubmitFailed("Something went wrong, please try again later");
                 } else {
@@ -170,7 +162,6 @@ public class ApplyForLoanActivity extends AppCompatActivity {
             Toast.makeText(this, "How much are you applying for?", Toast.LENGTH_SHORT).show();
             valid = false;
         }
-
         if (amount < 1000) {
             _amount.setError("Minimum amount to borrow is KES 1000");
             Toast.makeText(this, "Minimum amount to borrow is KES 1000", Toast.LENGTH_SHORT).show();
@@ -182,15 +173,6 @@ public class ApplyForLoanActivity extends AppCompatActivity {
         }else{
             _amount.setError(null);
         }
-
-        if (_monthlyIncome.getText().toString().equals("")) {
-            _monthlyIncome.setError("How much do you earn?");
-            Toast.makeText(this, "How much do you earn?", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }else{
-            _monthlyIncome.setError(null);
-        }
-
         return valid;
     }
 

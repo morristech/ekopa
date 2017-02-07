@@ -12,6 +12,7 @@
     <string name="manage_account">Manage Account</string>
     <string name="apply_for_loan">Apply for a Loan</string>
     <string name="apply_for_loan_upper_case">APPLY FOR A LOAN</string>
+    <string name="view_loan_upper_case">VIEW CURRENT LOAN</string>
     <string name="my_loans">My Loans</string>
     <string name="txt_done">Done</string>
     <string name="txt_send">Send Invite</string>
@@ -72,7 +73,9 @@
     <string name="loading">Loading&#8230;</string>
     <string name="action_log_out">Log out</string>
     <string name="apply_loan_need_more_info">eKopa would like to know you better.\n Please tell us more about yourself:</string>
-    <string name="current_limit">Current credit limit:</string>
+    <string name="current_limit">You can Qualify for:</string>
+    <string name="next_current_limit">Next Qualification Amount:</string>
+    <string name="current_loan">Your current Balance:</string>
     <string name="prompt_gender">Gender:</string>
     <string name="prompt_marriage_status">Are you married?</string>
     <string name="prompt_education_level">Highest education level:</string>
@@ -96,7 +99,7 @@
     <string name="code">Code</string>
     <string name="new_password">New PIN</string>
     <string name="reset">Reset</string>
-    <string name="greetings_sample">Hi John Doe</string>
+    <string name="greetings_sample">Welcome John Doe</string>
     <string name="welcome_info">Welcome to eKopa, your best app for soft loans. Let us help you turn your financial potential into a capability.</string>
     <string name="cash_sample">KES. 1500</string>
     <string name="forgot_pin">Forgot pin?</string>

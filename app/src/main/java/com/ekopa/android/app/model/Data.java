@@ -22,6 +22,7 @@ public class Data {
     private String isActive;
     private String activation_code;
     private Integer creditScore;
+    private Double currentBalance;
     private CustomerSettings settings;
     private List<Loan_request> loan_requests = new ArrayList<>();
     private List<Loan> loans = new ArrayList<>();
@@ -317,5 +318,13 @@ public class Data {
 
     public CustomerSettings getSettings() {
         return settings;
+    }
+
+    public Double getCurrentBalance() {
+        return currentBalance;
+    }
+
+    public void setCurrentBalance(Double currentBalance) {
+        this.currentBalance = currentBalance;
     }
 }

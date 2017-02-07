@@ -21,19 +21,6 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-    /**
-     * Endpoints:
-     * /api/customer/create?access_token=token     POST
-     * /api/customer/update?access_token=token     POST
-     * /api/customer/login?access_token=token      POST
-     * /api/customer/activate?access_token=token   POST
-     * /api/customer/activate?access_token=token   POST
-     * /api/customer/activate?access_token=token       GET
-     * /api/customer/calls?access_token=token      POST
-     * /api/customer/messages?access_token=token   POST
-     * /api/loan/apply?access_token=token          POST
-     * /api/loan/loanIdentifier?access_token=token     GET
-     **/
 
     @POST("users/createUserByIdNumber")
     Call<CustomerResponse> createCustomer(@Header("api-key") String apiKey, @Body Customer customer);
@@ -44,18 +31,22 @@ public interface ApiInterface {
     @POST("users/auth3")
     Call<ResponseModel> loginCustomer(@Header("api-key") String apiKey,@Body Customer customer);
 
+    @POST("users/activate/{activationCode}/{userRefId}")
+    Call<JsonObject> activateCustomer(@Header("api-key") String apiKey, @Path("activationCode") String activationCode, @Path("userRefId") String userRefId);
+
+    @POST("users/activate/resend")
+    Call<JsonObject> resendActivationCode(@Header("api-key") String apiKey,@Query("userRefId") String userRefId);
+
+
+    @POST("loans/qualification/{idNumber}")
+    Call<JsonObject> getCustomerLoanQualification(@Header("api-key") String apiKey,@Path("idNumber") String idNumber);
+
+
     @POST("customer/password/forgot")
     Call<ResponseModel> forgotPassword(@Body Customer customer);
 
     @POST("customer/password/reset")
     Call<ResponseModel> resetPassword(@Body Customer customer);
-
-    @FormUrlEncoded
-    @POST("user/activate")
-    Call<JsonObject> activateCustomer(@Header("api-key") String apiKey, @Path("activationCode") String activationCode, @Path("userRefId") String userRefId);
-
-    @POST("customer/activate/resend")
-    Call<JsonObject> resendActivationCode(@Query("access_token") String userToken);
 
     @POST("customer/activate")
     Call<ResponseModel> updateCustomerProfile(@Body Customer customer);
@@ -68,7 +59,6 @@ public interface ApiInterface {
 
     @POST("customer/messages?access_token=SYSKEY")
     Call<ResponseModel> messageSynchronization(@Body Message [] message);
-
 
     @FormUrlEncoded
     @POST("loan/apply")

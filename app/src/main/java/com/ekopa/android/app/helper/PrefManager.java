@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.security.KeyChain;
 
 import com.ekopa.android.app.activity.LoginActivity;
 
@@ -21,6 +22,11 @@ public class PrefManager {
     public static final String KEY_IMAGEURL = "ImageURL";
     // User's credit limit (make variable public to access from outside)
     public static final String KEY_CREDIT_LIMIT = "creditLimit";
+    // User's next credit limit (make variable public to access from outside)
+    public static final String KEY_NEXT_CREDIT_LIMIT = "nextCreditLimit";
+    // User's Current Loan Balance
+    public static final String KEY_CURRENT_BALANCE = "currentBalance";
+
     // User's referral code (make variable public to access from outside)
     public static final String KEY_REFERRAL_CODE = "referralCode";
     // Sharedpref file name
@@ -28,15 +34,17 @@ public class PrefManager {
     //phone
     public static final String KEY_PHONE = "phoneNumber";
     //id number
-    public static final String KEY_ID = "idNumber";
+    public static final String KEY_IDNUMBER = "idNumber";
     //dob
     public static final String KEY_DOB = "dateOfBirth";
+
 
     // User Login status (make variable public to access from outside)
     private static final String IS_LOGIN = "IsLoggedIn";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     // common message sender IDs (make variable public to access from outside)
     public static final String[] MESSAGE_SENDER_ID = new String[]{"MPESA"};
+
     // Shared Preferences
     SharedPreferences pref;
     // Editor for Shared preferences
@@ -59,9 +67,7 @@ public class PrefManager {
      * */
 
     public void createLoginSession(String userRefId, String name, String imgURL,
-                                   String phone, String idNumber, String dob, String creditLimit) {
-
-
+                                   String phone, String idNumber, String dob, String currentBalance) {
         // Storing userID in pref
         editor.putString(KEY_USERID, userRefId);
 
@@ -73,13 +79,12 @@ public class PrefManager {
         //phone
         editor.putString(KEY_PHONE, phone);
         //id number
-        editor.putString(KEY_ID, idNumber);
+        editor.putString(KEY_IDNUMBER, idNumber);
         //date of birth
         editor.putString(KEY_DOB, dob);
 
-        // Storing credit limit in pref
-        editor.putString(KEY_CREDIT_LIMIT, creditLimit);
-
+        //Current Balance
+        editor.putString(KEY_CURRENT_BALANCE, currentBalance);
         // commit changes
         editor.commit();
     }
@@ -100,20 +105,18 @@ public class PrefManager {
 
         // img url
         user.put(KEY_IMAGEURL, pref.getString(KEY_IMAGEURL, null));
-
-
         // credit limit
         user.put(KEY_CREDIT_LIMIT, pref.getString(KEY_CREDIT_LIMIT, null));
-
         // referral code
         user.put(KEY_REFERRAL_CODE, pref.getString(KEY_REFERRAL_CODE, null));
-
         //phone
         user.put(KEY_PHONE, pref.getString(KEY_PHONE, null));
         //ID number
-        user.put(KEY_ID, pref.getString(KEY_ID, null));
+        user.put(KEY_IDNUMBER, pref.getString(KEY_IDNUMBER, null));
         //dob
         user.put(KEY_DOB, pref.getString(KEY_DOB, null));
+        // credit limit
+        user.put(KEY_CURRENT_BALANCE, pref.getString(KEY_CURRENT_BALANCE, null));
 
         // return user
         return user;
@@ -139,6 +142,14 @@ public class PrefManager {
             _context.startActivity(i);
         }
 
+    }
+
+
+    public void setCustomerQualifiedAmounts(String qualifiedAmount){
+        // Storing login value as TRUE
+        editor.putString(KEY_CREDIT_LIMIT,qualifiedAmount);
+        // commit changes
+        editor.commit();
     }
 
     /**

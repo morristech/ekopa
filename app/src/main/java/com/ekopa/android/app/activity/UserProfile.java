@@ -36,7 +36,7 @@ public class UserProfile extends AppCompatActivity {
 
         tvNumber1.setText(prefManager.getUserDetails().get(prefManager.KEY_PHONE));
 //        tvNumber2.setText("0718000659");
-        tvNumber3.setText(prefManager.getUserDetails().get(prefManager.KEY_ID));
+        tvNumber3.setText(prefManager.getUserDetails().get(prefManager.KEY_IDNUMBER));
 //        tvNumber4.setText("mail@almodad.com");
         tvNumber5.setText(prefManager.getUserDetails().get(prefManager.KEY_DOB));
 

@@ -5,7 +5,7 @@ package com.ekopa.android.app.model;
  */
 
 public class CustomerResponse extends BaseResponse{
-    private String customerRefId;
+    private String refId;
     private String name;
     private String phoneNumber;
     private String photo;
@@ -15,12 +15,12 @@ public class CustomerResponse extends BaseResponse{
     private Integer creditScore;
 
 
-    public String getCustomerRefId() {
-        return customerRefId;
+    public String getRefId() {
+        return refId;
     }
 
-    public void setCustomerRefId(String customerRefId) {
-        this.customerRefId = customerRefId;
+    public void setRefId(String refId) {
+        this.refId = refId;
     }
 
     public String getName() {

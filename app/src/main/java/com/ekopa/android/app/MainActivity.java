@@ -22,11 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.ekopa.android.app.fragment.NoInternetFragment;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-import com.github.orangegangsters.lollipin.lib.PinCompatActivity;
-
 import com.ekopa.android.app.activity.ApplyForLoanActivity;
 import com.ekopa.android.app.activity.FeedbackActivity;
 import com.ekopa.android.app.activity.HelpFAQActivity;
@@ -40,6 +35,7 @@ import com.ekopa.android.app.fragment.HomePaidLoanFragment;
 import com.ekopa.android.app.fragment.HomePendingLoanFragment;
 import com.ekopa.android.app.fragment.HomeRejectedLoanFragment;
 import com.ekopa.android.app.fragment.LoadingFragment;
+import com.ekopa.android.app.fragment.NoInternetFragment;
 import com.ekopa.android.app.geolocation.LocationService;
 import com.ekopa.android.app.helper.PrefManager;
 import com.ekopa.android.app.invite.ContactsPickerActivity;
@@ -47,6 +43,11 @@ import com.ekopa.android.app.model.CustomerCallLog;
 import com.ekopa.android.app.model.Data;
 import com.ekopa.android.app.model.Message;
 import com.ekopa.android.app.model.ResponseModel;
+import com.facebook.appevents.AppEventsLogger;
+import com.github.orangegangsters.lollipin.lib.PinCompatActivity;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -54,9 +55,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
-
 import butterknife.ButterKnife;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,13 +74,6 @@ public class MainActivity extends PinCompatActivity implements
     NavigationView navigationView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
-//    @BindView(R.id.ll_apply_for_loan)    LinearLayout ll_apply_for_loan;
-//    @BindView(R.id.tv_home_customer_name)    TextView _custName;
-//    @BindView(R.id.tv_home_customer_photo)   CircleImageView _custPhoto;
-//    @BindView(R.id.tv_home_loan_balance)    TextView _loanBalance;
-//    @BindView(R.id.tv_home_credit_limit)    TextView _creditLimit;
-//    @BindView(R.id.tv_home_increase_limit)    TextView _linkIncreaseLimit;
-//    @BindView(R.id.tv_home_apply_now)    TextView _linkApplyNow;
 
     private boolean mUserLearnedDrawer;
     private int mCurrentSelectedPosition;
@@ -92,7 +84,8 @@ public class MainActivity extends PinCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        //FacebookSdk.sdkInitialize(getApplicationContext());
+
         AppEventsLogger.activateApp(this);
         prefManager = new PrefManager(this);
         prefManager.checkLogin();
@@ -101,25 +94,13 @@ public class MainActivity extends PinCompatActivity implements
         setSupportActionBar(toolbar);
         initInstancesDrawer(savedInstanceState);
 
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.fragment, new HomeFirstTimeFragment());
+        tx.commitAllowingStateLoss();
 
-        if(isNetworkAvailable()) {
-            //upload user messages and call logs
-           // uploadMpesaMessages();
-//        uploadAllCallLogs(getContentResolver());
-            startService(new Intent(this, LocationService.class));
 
-        fetchCustomerStatus();
-        }else{
-            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-            tx.replace(R.id.fragment, new NoInternetFragment());
-            tx.commit();
-            Toast.makeText(MainActivity.this,"No Internet connection!", Toast.LENGTH_LONG).show();
-        }
-
-//        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-//        tx.replace(R.id.fragment, new HomeFirstTimeFragment());
-//        tx.commit();
     }
+
 
     private void fetchCustomerStatus() {
         //Show loading fragment while we fetch customer status
@@ -261,7 +242,6 @@ public class MainActivity extends PinCompatActivity implements
                 mCurrentSelectedPosition = 3;
                 //my loans
                 Intent myLoans = new Intent(MainActivity.this, MyLoans.class);
-//                Intent myLoans = new Intent(MainActivity.this, LoansActivity.class);
                 startActivity(myLoans);
 
                 break;

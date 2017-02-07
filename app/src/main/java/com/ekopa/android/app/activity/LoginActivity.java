@@ -89,6 +89,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        _fbLoginButton.setVisibility(View.INVISIBLE);
         _fbLoginButton.setReadPermissions("email");
 
         _fbLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -149,12 +151,12 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 if (response.body() != null) {
                    Log.i("RESPONSE","Response body>>>"+response.body().getStatusCode());
-
-                   if(response.body().getStatusCode().toString().equals("200")) {
+                    String responseCode = response.body().getStatusCode().toString();
+                   if(responseCode.equals("200")) {
                         onLoginSuccess(response.body());
-                    }else if (response.body().getStatusCode().equals("401")) {
+                    }else if (responseCode.equals("401")) {
                         onLoginFailed("Incorrect phone or password");
-                    } else if (response.body().getStatusCode().equals("404")) {
+                    } else if (responseCode.equals("404")) {
                         onLoginFailed("No user found with that phone number.");
                     }else{
                        onLoginFailed("Response code not understood!");
@@ -200,7 +202,9 @@ public class LoginActivity extends AppCompatActivity {
         pref.setIsLogin();
         finish();
 
-        pref.createLoginSession(data.getId(),data.getName(),"",data.getPhonenumber(),data.getIdNumber(),data.getDob(), "0");
+        Log.d(">>>>",data.getCurrentBalance().toString());
+        pref.createLoginSession(data.getId(),data.getName(),"",data.getPhonenumber(),data.getIdNumber(),data.getDob(), data.getCurrentBalance().toString());
+
 
         if (data.getIsActive().toString().equals("1")) {
             Log.d(TAG, "Going to MainActivity");

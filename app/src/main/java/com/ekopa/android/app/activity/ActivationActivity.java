@@ -106,17 +106,18 @@ public class ActivationActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        String userRefId = pref.getUserDetails().get("userRefId");
+        String userRefId = pref.getUserDetails().get("userID");
 
-
-        String code = _activationCode.getText().toString();
+        String activationCode = _activationCode.getText().toString();
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<JsonObject> call = apiService.activateCustomer("omy4w7bRRKEUFP9Z",code, userRefId);
+        Call<JsonObject> call = apiService.activateCustomer("omy4w7bRRKEUFP9Z",activationCode, userRefId);
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 progressDialog.dismiss();
+                _btnActivate.setEnabled(false);
+
                 if (response.body() != null) {
                     String status = response.body().get("statusCode").getAsString();
                     String description = response.body().get("statusDescription").getAsString();
@@ -133,9 +134,7 @@ public class ActivationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 progressDialog.dismiss();
-                //TODO change error message shown to users
                 onActivateFailed(t.getMessage());
-
                 Log.d(TAG, "Activate Customer",t);
             }
         });
@@ -151,24 +150,19 @@ public class ActivationActivity extends AppCompatActivity {
 
         _btnActivate.setEnabled(false);
 
-        // TODO: Implement your own signup logic here.
-        Customer customer = new Customer();
-        customer.setIdNumber(pref.getUserDetails().get("idNumber"));
-        customer.setPhoneNumber(pref.getUserDetails().get("phoneNumber"));
-        // customer.setPhoto(photo_base64)
-
+        String userRefId = pref.getUserDetails().get("userID");
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<CustomerResponse> call = apiService.createCustomer("omy4w7bRRKEUFP9Z",customer);
-        call.enqueue(new Callback<CustomerResponse>() {
+        Call<JsonObject> call = apiService.resendActivationCode("omy4w7bRRKEUFP9Z",userRefId);
+        call.enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(Call<CustomerResponse> call, Response<CustomerResponse> response) {
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 progressDialog.dismiss();
                 _btnActivate.setEnabled(true);
                 startTimer();
             }
 
             @Override
-            public void onFailure(Call<CustomerResponse> call, Throwable t) {
+            public void onFailure(Call<JsonObject> call, Throwable t) {
                 progressDialog.dismiss();
                 _btnActivate.setEnabled(true);
             }

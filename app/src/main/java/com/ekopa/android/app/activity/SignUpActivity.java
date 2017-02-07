@@ -30,7 +30,6 @@ import com.ekopa.android.app.api.ApiClient;
 import com.ekopa.android.app.api.ApiInterface;
 import com.ekopa.android.app.helper.PrefManager;
 import com.ekopa.android.app.model.Customer;
-import com.ekopa.android.app.model.ResponseModel;
 import com.ekopa.android.app.util.KopaUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -192,12 +191,11 @@ public class SignUpActivity extends AppCompatActivity {
         CustomerResponse customer = gson.fromJson(json, CustomerResponse.class);
         PrefManager pref = new PrefManager(SignUpActivity.this);
 
-        String userRefId = customer.getCustomerRefId();
+        String userRefId = customer.getRefId();
         String name = customer.getName();
         //String imgURL = customer.getPhoto();
         String imgURL = "";
         String creditScore = customer.getCreditScore().toString();
-        Double creditLimit=0.0;
 
         String phone = customer.getPhoneNumber(),
                 id = customer.getIdNumber(),
@@ -205,8 +203,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, ActivationActivity.class));
 
-        pref.createLoginSession(userRefId, name, imgURL, phone, id, dob, creditLimit.toString());
-
+        pref.createLoginSession(userRefId, name, imgURL, phone, id, dob,"0.0");
         setResult(RESULT_OK, null);
         finish();
     }
