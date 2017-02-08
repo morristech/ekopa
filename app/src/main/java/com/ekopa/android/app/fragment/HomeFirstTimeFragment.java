@@ -46,6 +46,7 @@ public class HomeFirstTimeFragment extends Fragment {
 
     public static NumberFormat nf = NumberFormat.getIntegerInstance ();
 
+
     public HomeFirstTimeFragment() {
         // Required empty public constructor
     }

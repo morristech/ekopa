@@ -25,6 +25,11 @@ import com.ekopa.android.app.api.ApiInterface;
 import com.ekopa.android.app.helper.PrefManager;
 import com.ekopa.android.app.model.ResponseModel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.NumberFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -40,6 +45,7 @@ public class ApplyForLoanActivity extends AppCompatActivity {
     EditText _amount;
     @BindView(R.id.btn_apply_loan_submit)
     AppCompatButton btnSubmit;
+    public static NumberFormat nf = NumberFormat.getIntegerInstance ();
 
     PrefManager pref;
 
@@ -54,7 +60,8 @@ public class ApplyForLoanActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String creditLimit = "KES " + pref.getUserDetails().get("creditLimit") + ".00";
+
+        String creditLimit = "KES " + nf.format(Double.valueOf(pref.getUserDetails().get("creditLimit")));
 
         _creditLimit.setText(creditLimit);
 
@@ -81,7 +88,7 @@ public class ApplyForLoanActivity extends AppCompatActivity {
     }
 
     private void submitLoan() {
-        Log.d(TAG, "Login");
+        Log.d(TAG, "<--Submit Loan Application-->");
 
         if (!validate()) {
             onSubmitFailed("");
@@ -99,27 +106,27 @@ public class ApplyForLoanActivity extends AppCompatActivity {
         String token = pref.getUserDetails().get("userToken");
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<ResponseModel> call = apiService.applyLoan(token, amount);
-        call.enqueue(new Callback<ResponseModel>() {
+        Call<JSONObject> call = apiService.applyLoan(token, amount);
+        call.enqueue(new Callback<JSONObject>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+            public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
                 progressDialog.dismiss();
                 if (response.body() == null) {
                     onSubmitFailed("Something went wrong, please try again later");
                 } else {
-                    if (response.body() != null && response.body().getStatusCode().equals(200)) {
-                        onSubmitSuccess();
-                    } else if (response.body().getStatusCode().equals(400)) {
-                        onSubmitFailed("Incorrect phone or password");
-                    } else if (response.body().getStatusCode().equals(404)) {
-                        onSubmitFailed("No user found with that phone number.");
+                    try {
+                        if (response.body() != null && response.body().get("loanStatus").equals("APPROVED")) {
+                            onSubmitSuccess();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
+            public void onFailure(Call<JSONObject> call, Throwable t) {
                 progressDialog.dismiss();
             }
         });

@@ -9,6 +9,8 @@ import com.ekopa.android.app.model.Location;
 import com.ekopa.android.app.model.Message;
 import com.ekopa.android.app.model.ResponseModel;
 
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -60,9 +62,8 @@ public interface ApiInterface {
     @POST("customer/messages?access_token=SYSKEY")
     Call<ResponseModel> messageSynchronization(@Body Message [] message);
 
-    @FormUrlEncoded
-    @POST("loan/apply")
-    Call<ResponseModel> applyLoan(@Query("access_token") String userToken, @Field("loan_amount") String loanAmount);
+    @POST("loans/apply/{idNumber}/{amount}")
+    Call<JSONObject> applyLoan(@Path("idNumber") String userToken, @Path("amount") String loanAmount);
 
     @GET("loan/{loanIdentifier}")
     Call<ResponseModel> getLoanDetails(@Path("loanIdentifier") String loanIdentifier, @Query("access_token") String userToken);
