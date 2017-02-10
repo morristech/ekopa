@@ -86,6 +86,7 @@
     <string name="no">No</string>
     <string name="submit">SUBMIT</string>
     <string name="apply_now">APPLY NOW</string>
+    <string name="request_loan">REQUEST LOAN</string>
     <string name="increase_limit">Increase Limit</string>
     <string name="submit_success">Application sent successfully. We will notify you shortly once it has been approved.</string>
     <string name="confirm_password">Confirm PIN</string>
