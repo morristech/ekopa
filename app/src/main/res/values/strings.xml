@@ -73,9 +73,9 @@
     <string name="loading">Loading&#8230;</string>
     <string name="action_log_out">Log out</string>
     <string name="apply_loan_need_more_info">eKopa would like to know you better.\n Please tell us more about yourself:</string>
-    <string name="current_limit">You can Qualify for:</string>
-    <string name="next_current_limit">Next Qualification Amount:</string>
-    <string name="current_loan">Your current Balance:</string>
+    <string name="current_limit">Borrow upto:</string>
+    <string name="current_loan">Loan Balance:</string>
+    <string name="next_current_limit">Next Instalment:</string>
     <string name="prompt_gender">Gender:</string>
     <string name="prompt_marriage_status">Are you married?</string>
     <string name="prompt_education_level">Highest education level:</string>

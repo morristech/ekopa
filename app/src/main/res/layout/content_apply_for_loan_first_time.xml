@@ -15,7 +15,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/three_grid_unit"
         android:textColor="@color/body_text_1_inverse"
-        android:text="@string/submit"
+        android:text="Apply Now"
         android:theme="@style/primaryButtons" />
 
     <ScrollView
@@ -29,129 +29,151 @@
         <android.support.v7.widget.CardView
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="40dp"
             android:layout_margin="@dimen/activity_horizontal_margin">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
-
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="459dp"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.06">
+
+                    <TextView
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="Your Limit is:"
+                        android:textColor="@color/body_text_1"
+                        android:textSize="@dimen/two_and_half_text_unit"
+                        android:id="@+id/textView15" />
+
+                    <TextView
+                        android:id="@+id/tv_apply_credit_limit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="KES. 2500"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/two_and_half_text_unit" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="Loan Terms:"
+                        android:textColor="@color/body_text_1"
+                        android:textSize="20.0sp"
+                        android:textStyle="normal|bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_weight="1"
-                    android:text="@string/current_limit"
-                    android:textColor="@color/body_text_1"
-                    android:textSize="@dimen/two_and_half_text_unit" />
+                      <TextView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/activity_vertical_margin"
+                          android:text="3 days repayment of Kes 200"
+                          android:fontFamily="sans-serif"
+                          android:textColor="@color/body_text_1" />
+                  </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_apply_credit_limit"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="Interest of 1% of Kes 10"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/body_text_1" />
+                </LinearLayout>
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_weight="0.85"
+                        android:text="Select Amount:"
+                        android:textColor="@color/body_text_1"
+                        android:id="@+id/textView14"
+                        android:textStyle="normal|bold"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+             <RadioGroup
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                <RadioButton
+                    android:text="Kes 1,000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:text="KES. 2500"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/two_and_half_text_unit" />
-            </LinearLayout>
-            <!-- Password Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                    android:id="@+id/amount_1"
+                    android:layout_weight="0.07" />
 
-            </android.support.design.widget.TextInputLayout>
+                <RadioButton
+                    android:text="Kes 2,000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/amount_2"
+                    android:layout_weight="0.07" />
 
-            <EditText
-                android:id="@+id/et_apply_amount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/amount"
-                android:inputType="number"
-                android:textSize="16sp" />
+                    <RadioButton
+                        android:text="Kes 3,000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/amount_3"
+                        android:layout_weight="0.07" />
 
+                    <RadioButton
+                        android:text="Kes 4,000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/amount_4"
+                        android:layout_weight="0.07" />
+
+             </RadioGroup>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/activity_horizontal_margin">
-
-                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Loan Terms"
-                    android:textColor="@color/body_text_1"
-                    android:textSize="@dimen/two_and_half_text_unit" />
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/et_loan_repayment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/one_grid_unit"
-                    android:text="3 Daily Installments of Kes XX" />
-
-                <LinearLayout
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:minHeight="?attr/listPreferredItemHeightSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Interest"
-                        android:textColor="@color/body_text_1"
-                        android:textSize="@dimen/two_text_unit" />
-
-                    <TextView
-                        android:id="@+id/tv_total_interest"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cash_sample"
-                        android:textColor="@color/body_text_1"
-                        android:textSize="@dimen/two_text_unit" />
-
+                    <EditText
+                        android:id="@+id/et_apply_amount"
+                        android:layout_width="379dp"
+                        android:layout_height="59dp"
+                        android:hint="@string/amount"
+                        android:inputType="number"
+                        android:textSize="30sp"
+                        android:visibility="invisible" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:minHeight="?attr/listPreferredItemHeightSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Total Due:"
-                        android:textColor="@color/body_text_1"
-                        android:textSize="@dimen/two_text_unit" />
-
-                    <TextView
-                        android:id="@+id/tv_total_int"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cash_sample"
-                        android:textColor="@color/body_text_1"
-                        android:textSize="@dimen/two_text_unit" />
-
-                </LinearLayout>
-
             </LinearLayout>
-        </LinearLayout>
 
         </android.support.v7.widget.CardView>
 

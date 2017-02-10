@@ -24,7 +24,7 @@
     <color name="cardView_light_background">#fffafafa</color>
     <color name="cardView_shadow_end_color">#03000000</color>
     <color name="cardView_shadow_start_color">#37000000</color>
-    <color name="white">#ffffffff</color>
+    <color name="white">#ffffff</color>
     <color name="white_semitransparent">#aaffffff</color>
 
     <!-- Screens background color-->
